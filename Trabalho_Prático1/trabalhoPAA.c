@@ -105,8 +105,24 @@ void insertionSort(int *vetor, int tamanhoVetor){
     return;
 }
 
-void shellSort(){
-
+void shellSort(int *vetor, int n){
+    int i, j, tmp;
+    int h = 1;
+    do {
+        h = 3 * h + 1;
+    } while(h < n);
+    do {
+	h /= 3;
+	for(i = h; i < n; i++) {
+            tmp = vetor[i];
+            j = i - h;
+            while (j >= 0 && tmp < vetor[j]) {
+                vetor[j + h] = vetor[j];
+                j -= h;
+            }
+            vetor[j + h] = tmp;
+        }
+    } while ( h > 1);
 }
 
 void selectionSort(int *vetor, int tamanhoVetor){
