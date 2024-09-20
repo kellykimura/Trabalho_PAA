@@ -127,8 +127,47 @@ void selectionSort(int *vetor, int tamanhoVetor){
     return;
 }
 
-void heapSort(){
+//precisa desta função para o HeapSort 
+void peneira(int *vetor, int raiz, int fundo) {
+	int pronto, filhoMax, tmp;
 
+	pronto = 0;
+	while ((raiz*2 <= fundo) && (!pronto)) {
+		if (raiz*2 == fundo) {
+			filhoMax = raiz * 2;
+		}
+		else if (vetor[raiz * 2] > vetor[raiz * 2 + 1]) {
+			filhoMax = raiz * 2;
+		}
+		else {
+			filhoMax = raiz * 2 + 1;
+		}
+
+	if (vetor[raiz] < vetor[filhoMax]) {
+		tmp = vetor[raiz];
+		vetor[raiz] = vetor[filhoMax];
+		vetor[filhoMax] = tmp;
+		raiz = filhoMax;
+    }
+	else {
+      pronto = 1;
+	}
+  }
+}
+
+void heapSort(int *vetor, int n){
+    int i, tmp;
+
+	for (i = (n / 2); i >= 0; i--) {
+		peneira(vetor, i, n - 1);
+	}
+
+	for (i = n-1; i >= 1; i--) {
+		tmp = vetor[0];
+		vetor[0] = vetor[i];
+		vetor[i] = tmp;
+		peneira(vetor, 0, i-1);
+	}
 }
 
 //precisa desta função para o MergeSort
