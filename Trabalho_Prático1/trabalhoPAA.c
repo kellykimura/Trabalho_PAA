@@ -57,7 +57,7 @@ void bubbleSortMelhorado(int *vetor, int tamanhoVetor){
 }
 
 //precisa desta função para o QuickSort 
-int particao(int *vetor, int esquerda, int direita){
+int particaoQuickSort(int *vetor, int esquerda, int direita){
 
 	int pivo = *(vetor+esquerda), i = esquerda+1, j = direita, auxTroca;
 
@@ -81,14 +81,48 @@ int particao(int *vetor, int esquerda, int direita){
 
 void quickSort(int *vetor, int esquerda, int direita){
     if(esquerda < direita){						        //Para as chamadas recursivas quando o lado esquerdo e direito se cruzarem.
-		int meio = particao(vetor,esquerda,direita);    //Particiona o vetor em duas partes utilizando pivo no inicio
+		int meio = particaoQuickSort(vetor,esquerda,direita);    //Particiona o vetor em duas partes utilizando pivo no inicio
 		quickSort(vetor,esquerda,meio-1);			    //Aplica o Quick Sort na partição esquerda.
 		quickSort(vetor,meio+1,direita);				//Aplica o Quick Sort na partição direita.
 	}
 	return;
 }
 
-void quickSortMelhorado();
+//precisa desta função para o QuickSortMelhorado
+void ordena(int esq, int dir, int *vetor){
+    int i,j;
+    particaoQuickSortMelhorado(esq,dir,&i,&j,vetor);
+    if(esq<j)
+        ordena(esq,j,vetor);
+    if(i<dir)
+        ordena(i,dir,vetor);
+}
+
+//precisa desta função para o QuickSortMelhorado
+void particaoQuickSortMelhorado(int esq, int dir, int *i, int *j, int *vetor){
+    int pivo,tmp;
+    *i=esq;
+    *j=dir;
+    pivo=vetor[(*i+*j)/2];
+    do{
+        while(pivo>vetor[*i])
+            (*i)++;
+        while(pivo<vetor[*j])
+            (*j)--;
+        if(*i<=*j){
+            tmp=vetor[*i];
+            vetor[*i]=vetor[*j];
+            vetor[*j]=tmp;
+            (*i)++;
+            (*j)--;
+        }
+
+    }while(*i<=*j);
+}
+
+void quickSortMelhorado(int *vetor, int n){
+    ordena(0, n-1, vetor);
+}
 
 void insertionSort(int *vetor, int tamanhoVetor){
     int i, j, chave;
