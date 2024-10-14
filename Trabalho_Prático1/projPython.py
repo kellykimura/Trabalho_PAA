@@ -96,12 +96,23 @@ def ordena (esq, dir, vetor):
 def quickSortMelhorado(vetor):
     ordena(0, len(vetor)-1, vetor)
 
-        
+# 5. Insertion Sort
+def insertionSort (vetor):
+    for i in range(1, len(vetor)):
+        chave = vetor[i]
+        j = i - 1
 
-vetor = [5, 2, 9, 13, 1, 23, 45, 3, 8, 6]
+        while j >= 0 and vetor[j] > chave:
+            vetor[j + 1] = vetor[j]
+            j -= 1
+        
+        vetor[j + 1] = chave
+
+
+vetor = [88, 203, 789, 5, 2, 9, 13, 1, 23, 45, 3, 8, 6, 27, 109, ]
 #bubbleSort(vetor)
 #bubbleSortMelhorado(vetor)
 
-quickSortMelhorado(vetor)
+insertionSort(vetor)
 print(vetor)
 
