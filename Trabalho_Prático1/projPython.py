@@ -127,6 +127,17 @@ def shellSort (vetor):
 
 
 # 7. Selection Sort
+def selectionSort (vetor):
+    tam = len(vetor)
+    for i in range (tam - 1):
+        menor = vetor[i]
+        posMenor = i
+        for j in range (i + 1, tam):
+            if vetor[j] < menor:
+                menor = vetor[j]
+                posMenor = j
+
+        vetor[posMenor], vetor[i] = vetor[i], menor
 
 # 8. Heap Sort
 
@@ -137,6 +148,6 @@ vetor = [12, 14, 15, 88, 203, 789, 5, 2, 9, 13, 1, 23, 45, 3, 8, 6, 27, 109, 4, 
 #bubbleSort(vetor)
 #bubbleSortMelhorado(vetor)
 
-shellSort(vetor)
+selectionSort(vetor)
 print(vetor)
 
