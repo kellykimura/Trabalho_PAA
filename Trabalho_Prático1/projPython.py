@@ -108,11 +108,35 @@ def insertionSort (vetor):
         
         vetor[j + 1] = chave
 
+# 6. Shell Sort
+def shellSort (vetor):
+    tam = len(vetor)
+    h = 1
+    while h < tam:
+        h = 3 * h + 1
+    
+    while h > 1:
+        h //= 3
+        for i in range(h, tam):
+            tmp = vetor[i]
+            j = i - h
+            while j >= 0 and tmp < vetor[j]:
+                vetor[j + h] = vetor[j]
+                j -= h
+            vetor[j + h] = tmp
 
-vetor = [88, 203, 789, 5, 2, 9, 13, 1, 23, 45, 3, 8, 6, 27, 109, ]
+
+# 7. Selection Sort
+
+# 8. Heap Sort
+
+# 9. Merge Sort 
+
+
+vetor = [12, 14, 15, 88, 203, 789, 5, 2, 9, 13, 1, 23, 45, 3, 8, 6, 27, 109, 4, 7, 11, 10, 21]
 #bubbleSort(vetor)
 #bubbleSortMelhorado(vetor)
 
-insertionSort(vetor)
+shellSort(vetor)
 print(vetor)
 
