@@ -212,7 +212,7 @@ def mergeSort(vetor, ini, fim):
         # Função que aplica o merge - juntar os elementos
         merge(vetor, [0] * len(vetor), ini, meio, fim)
 
-x = 10000
+x = 20
 
 
 vetor = []
@@ -221,7 +221,7 @@ for _ in range(x):
 print (vetor)
 print("\n\n")
 
-mergeSort(vetor, 0, len(vetor))
+"""mergeSort(vetor, 0, len(vetor))
 print(vetor)
 print("\n\n")
 
@@ -239,15 +239,15 @@ print(vetor)
 print("\n\n")
 mergeSort(vetor, 0, len(vetor))
 print(vetor)
-print("\n\n")
+print("\n\n")"""
 
 
 
-"""heapSort(vetor)
+quickSort(vetor, 0, len(vetor))
 print(vetor)
 print("\n\n")
 
-for i in range(x):
+"""for i in range(x):
     vetor[i] = i
 print(vetor)
 print("\n\n")
