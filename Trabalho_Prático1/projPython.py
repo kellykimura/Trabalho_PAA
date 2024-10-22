@@ -1,7 +1,6 @@
 <<<<<<< HEAD
 import random
 =======
-import random as rd
 >>>>>>> cc5985ed447177fe43fb92b6817b98e191506847
 
 # 1. bubbleSort
