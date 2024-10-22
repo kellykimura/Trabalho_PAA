@@ -1,4 +1,4 @@
-
+import random as rd
 
 # 1. bubbleSort
 def bubbleSort (vetor):
@@ -140,14 +140,82 @@ def selectionSort (vetor):
         vetor[posMenor], vetor[i] = vetor[i], menor
 
 # 8. Heap Sort
+def peneira (vetor, raiz, fundo):
+    pronto = False
+    while (raiz*2 <= fundo) and not pronto:
+        if raiz*2 == fundo:
+            filhoMax = raiz * 2
+        elif vetor[raiz * 2] > vetor[raiz * 2 + 1]:
+            filhoMax = raiz * 2
+        else:
+            filhoMax = raiz * 2 + 1
+        
+        if vetor[raiz] < vetor[filhoMax]:
+            vetor[raiz], vetor[filhoMax] = vetor[filhoMax], vetor[raiz]
+            raiz = filhoMax
+        else:
+            pronto = True
+            
+
+def heapSort (vetor):
+    tam = len(vetor)
+
+    for i in range(tam // 2, -1, -1):
+        peneira(vetor, i, tam -1)
+    
+    for i in range(tam - 1, 0, -1):
+        vetor[0], vetor[i] = vetor[i], vetor[0]
+        peneira(vetor, 0, i - 1)
+
 
 # 9. Merge Sort 
+def merge(subVetor, auxVetor, ini, meio, fim):
+    i = ini
+    j = meio
+    k = ini  # Começar a partir de 'ini'
+
+    # Mescla os dois subvetores
+    while i < meio and j < fim:
+        if subVetor[i] <= subVetor[j]:
+            auxVetor[k] = subVetor[i]
+            i += 1
+        else:
+            auxVetor[k] = subVetor[j]
+            j += 1
+        k += 1
+
+    # Copia os elementos restantes do primeiro subvetor, se houver
+    while i < meio:
+        auxVetor[k] = subVetor[i]
+        i += 1
+        k += 1
+
+    # Copia os elementos restantes do segundo subvetor, se houver
+    while j < fim:
+        auxVetor[k] = subVetor[j]
+        j += 1
+        k += 1
+
+    # Copia o vetor ordenado de volta para o vetor original
+    for k in range(ini, fim):
+        subVetor[k] = auxVetor[k]
 
 
-vetor = [12, 14, 15, 88, 203, 789, 5, 2, 9, 13, 1, 23, 45, 3, 8, 6, 27, 109, 4, 7, 11, 10, 21]
-#bubbleSort(vetor)
-#bubbleSortMelhorado(vetor)
+def mergeSort(vetor, ini, fim):
+    if ini < fim - 1:
+        meio = (ini + fim) // 2
 
-selectionSort(vetor)
+        # Metade da esquerda - dividir
+        mergeSort(vetor, ini, meio)
+        # Metade da direita - dividir
+        mergeSort(vetor, meio, fim)
+        # Função que aplica o merge - juntar os elementos
+        merge(vetor, [0] * len(vetor), ini, meio, fim)
+
+
+
+vetor = [12, 14, 15, 88, 402, 19, 20, 203, 789, 5, 2, 16, 17, 9, 13, 1, 23, 45, 3, 8, 6, 27, 109, 4, 7, 11, 10, 18, 24, 21]
+
+mergeSort(vetor, 0, len(vetor))
 print(vetor)
 
