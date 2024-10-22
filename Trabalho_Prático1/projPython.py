@@ -1,4 +1,4 @@
-
+import random
 
 # 1. bubbleSort
 def bubbleSort (vetor):
@@ -147,6 +147,11 @@ def selectionSort (vetor):
 vetor = [12, 14, 15, 88, 203, 789, 5, 2, 9, 13, 1, 23, 45, 3, 8, 6, 27, 109, 4, 7, 11, 10, 21]
 #bubbleSort(vetor)
 #bubbleSortMelhorado(vetor)
+
+for _ in range(5):
+  vetor = random.randint(1, 100)
+  
+
 
 quickSort(vetor, 0, len(vetor))
 print(vetor)
