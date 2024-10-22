@@ -1,7 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import random
 =======
 >>>>>>> cc5985ed447177fe43fb92b6817b98e191506847
+=======
+import random as rd
+>>>>>>> fbe569711f7b145bf9a41b5c692d124126e5c604
 
 # 1. bubbleSort
 def bubbleSort (vetor):
@@ -208,27 +212,5 @@ def mergeSort(vetor, ini, fim):
     if ini < fim - 1:
         meio = (ini + fim) // 2
 
-<<<<<<< HEAD
-for _ in range(5):
-  vetor = random.randint(1, 100)
-  
 
-
-quickSort(vetor, 0, len(vetor))
-=======
-        # Metade da esquerda - dividir
-        mergeSort(vetor, ini, meio)
-        # Metade da direita - dividir
-        mergeSort(vetor, meio, fim)
-        # Função que aplica o merge - juntar os elementos
-        merge(vetor, [0] * len(vetor), ini, meio, fim)
-
-
-
-vetor = [12, 14, 15, 88, 402, 19, 20, 203, 789, 5, 2, 16, 17, 9, 13, 1, 23, 45, 3, 8, 6, 27, 109, 4, 7, 11, 10, 18, 24, 21]
-
-
-mergeSort(vetor, 0, len(vetor))
->>>>>>> cc5985ed447177fe43fb92b6817b98e191506847
-print(vetor)
 

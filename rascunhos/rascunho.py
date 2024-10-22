@@ -1,5 +1,5 @@
 from random import *
-from sortingAlgorithms import *
+from projPython import *
 from time import time 
 from matplotlib import pyplot as plt
 import pandas as pd
