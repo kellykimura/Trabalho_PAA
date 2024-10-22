@@ -216,6 +216,7 @@ def mergeSort(vetor, ini, fim):
 
 vetor = [12, 14, 15, 88, 402, 19, 20, 203, 789, 5, 2, 16, 17, 9, 13, 1, 23, 45, 3, 8, 6, 27, 109, 4, 7, 11, 10, 18, 24, 21]
 
+
 mergeSort(vetor, 0, len(vetor))
 print(vetor)
 

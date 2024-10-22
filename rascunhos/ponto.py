@@ -169,8 +169,51 @@ def heapSort (vetor):
 
 
 # 9. Merge Sort 
+def merge(subVetor, auxVetor, ini, meio, fim):
+    i = ini
+    j = meio
+    k = ini  # Começar a partir de 'ini'
 
-x = 10
+    # Mescla os dois subvetores
+    while i < meio and j < fim:
+        if subVetor[i] <= subVetor[j]:
+            auxVetor[k] = subVetor[i]
+            i += 1
+        else:
+            auxVetor[k] = subVetor[j]
+            j += 1
+        k += 1
+
+    # Copia os elementos restantes do primeiro subvetor, se houver
+    while i < meio:
+        auxVetor[k] = subVetor[i]
+        i += 1
+        k += 1
+
+    # Copia os elementos restantes do segundo subvetor, se houver
+    while j < fim:
+        auxVetor[k] = subVetor[j]
+        j += 1
+        k += 1
+
+    # Copia o vetor ordenado de volta para o vetor original
+    for k in range(ini, fim):
+        subVetor[k] = auxVetor[k]
+
+
+def mergeSort(vetor, ini, fim):
+    if ini < fim - 1:
+        meio = (ini + fim) // 2
+
+        # Metade da esquerda - dividir
+        mergeSort(vetor, ini, meio)
+        # Metade da direita - dividir
+        mergeSort(vetor, meio, fim)
+        # Função que aplica o merge - juntar os elementos
+        merge(vetor, [0] * len(vetor), ini, meio, fim)
+
+x = 10000
+
 
 vetor = []
 for _ in range(x):
@@ -178,7 +221,29 @@ for _ in range(x):
 print (vetor)
 print("\n\n")
 
-heapSort(vetor)
+mergeSort(vetor, 0, len(vetor))
+print(vetor)
+print("\n\n")
+
+for i in range(x):
+    vetor[i] = i
+print(vetor)
+print("\n\n")
+mergeSort(vetor, 0, len(vetor))
+print(vetor)
+print("\n\n")
+
+for i in range(x):
+    vetor[i] = (x-1) - i
+print(vetor)
+print("\n\n")
+mergeSort(vetor, 0, len(vetor))
+print(vetor)
+print("\n\n")
+
+
+
+"""heapSort(vetor)
 print(vetor)
 print("\n\n")
 
@@ -195,8 +260,7 @@ print("\n\n")
 for i in range(x):
     vetor[i] = (x-1) - i
 print(vetor)
-print("\n\n")
+print("\n\n")"""
 
-heapSort(vetor)
-print(vetor)
+
 
