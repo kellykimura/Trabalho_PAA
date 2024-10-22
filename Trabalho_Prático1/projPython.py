@@ -148,6 +148,6 @@ vetor = [12, 14, 15, 88, 203, 789, 5, 2, 9, 13, 1, 23, 45, 3, 8, 6, 27, 109, 4, 
 #bubbleSort(vetor)
 #bubbleSortMelhorado(vetor)
 
-selectionSort(vetor)
+quickSort(vetor, 0, len(vetor))
 print(vetor)
 

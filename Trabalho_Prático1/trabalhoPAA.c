@@ -12,6 +12,7 @@ Merge Sort
 
 #include<stdio.h>
 #include<stdlib.h>
+#include<time.h>
 
 //para testar o caso médio
 void inserirElementosOrdemAleatoria();
@@ -88,15 +89,6 @@ void quickSort(int *vetor, int esquerda, int direita){
 	return;
 }
 
-//precisa desta função para o QuickSortMelhorado
-void ordena(int esq, int dir, int *vetor){
-    int i,j;
-    particaoQuickSortMelhorado(esq,dir,&i,&j,vetor);
-    if(esq<j)
-        ordena(esq,j,vetor);
-    if(i<dir)
-        ordena(i,dir,vetor);
-}
 
 //precisa desta função para o QuickSortMelhorado
 void particaoQuickSortMelhorado(int esq, int dir, int *i, int *j, int *vetor){
@@ -119,6 +111,18 @@ void particaoQuickSortMelhorado(int esq, int dir, int *i, int *j, int *vetor){
 
     }while(*i<=*j);
 }
+
+
+//precisa desta função para o QuickSortMelhorado
+void ordena(int esq, int dir, int *vetor){
+    int i,j;
+    particaoQuickSortMelhorado(esq,dir,&i,&j,vetor);
+    if(esq<j)
+        ordena(esq,j,vetor);
+    if(i<dir)
+        ordena(i,dir,vetor);
+}
+
 
 void quickSortMelhorado(int *vetor, int n){
     ordena(0, n-1, vetor);
@@ -260,9 +264,23 @@ void mergeSort(int *vetor, int ini, int fim){
 int main()
 {
 
+    int vetor[20];
 
+    for(int i=0; i<20; i++){
+        vetor[i] = rand()%50;
+    }
 
+    for(int i=0; i<20; i++){
+        printf("%d ", vetor[i]);
+    }
 
+    mergeSort(vetor, 0, 20);
+
+    printf("\n\n");
+
+    for(int i=0; i<20; i++){
+        printf("%d ", vetor[i]);
+    }
 
 
     return 0;
