@@ -219,6 +219,7 @@ def mergeSort(vetor, ini, fim):
     if ini < fim - 1:
         meio = (ini + fim) // 2
 
+
         # Metade da esquerda - dividir
         mergeSort(vetor, ini, meio)
         # Metade da direita - dividir
@@ -227,3 +228,5 @@ def mergeSort(vetor, ini, fim):
         merge(vetor, [0] * len(vetor), ini, meio, fim)
     
     return (vetor)
+
+
