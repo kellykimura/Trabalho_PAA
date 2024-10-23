@@ -1,5 +1,3 @@
-import random as rd
-
 # 1. bubbleSort
 def bubbleSort (vetor):
 
@@ -12,6 +10,8 @@ def bubbleSort (vetor):
             if vetor[j] > vetor[j+1]:
                 # trocando as posjções dos elementos
                 vetor[j], vetor[j+1] = vetor[j+1], vetor[j]
+
+    return (vetor)
 
 # como chamar
 # bubbleSort(vetor)
@@ -30,6 +30,8 @@ def bubbleSortMelhorado (vetor):
 
             if not swapped:
                 break
+
+    return (vetor)
 
 
 # 3. Quick Sort
@@ -60,6 +62,8 @@ def quickSort (vetor, esquerda, direita):
         meio = particaoQuickSort(vetor, esquerda, direita)
         quickSort(vetor, esquerda, meio - 1)
         quickSort(vetor, meio + 1, direita)
+
+    return (vetor)
 
 
 # 4. Quick Sort Melhorado
@@ -96,6 +100,8 @@ def ordena (esq, dir, vetor):
 def quickSortMelhorado(vetor):
     ordena(0, len(vetor)-1, vetor)
 
+    return (vetor)
+
 # 5. Insertion Sort
 def insertionSort (vetor):
     for i in range(1, len(vetor)):
@@ -107,6 +113,8 @@ def insertionSort (vetor):
             j -= 1
         
         vetor[j + 1] = chave
+
+    return (vetor)
 
 # 6. Shell Sort
 def shellSort (vetor):
@@ -125,6 +133,8 @@ def shellSort (vetor):
                 j -= h
             vetor[j + h] = tmp
 
+    return (vetor)
+
 
 # 7. Selection Sort
 def selectionSort (vetor):
@@ -138,6 +148,8 @@ def selectionSort (vetor):
                 posMenor = j
 
         vetor[posMenor], vetor[i] = vetor[i], menor
+    
+    return (vetor)
 
 # 8. Heap Sort
 def peneira (vetor, raiz, fundo):
@@ -166,6 +178,8 @@ def heapSort (vetor):
     for i in range(tam - 1, 0, -1):
         vetor[0], vetor[i] = vetor[i], vetor[0]
         peneira(vetor, 0, i - 1)
+    
+    return (vetor)
 
 
 # 9. Merge Sort 
@@ -205,5 +219,11 @@ def mergeSort(vetor, ini, fim):
     if ini < fim - 1:
         meio = (ini + fim) // 2
 
-
-
+        # Metade da esquerda - dividir
+        mergeSort(vetor, ini, meio)
+        # Metade da direita - dividir
+        mergeSort(vetor, meio, fim)
+        # Função que aplica o merge - juntar os elementos
+        merge(vetor, [0] * len(vetor), ini, meio, fim)
+    
+    return (vetor)
